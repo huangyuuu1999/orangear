@@ -2,9 +2,9 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Build-image') {
             steps {
-                echo 'Building..'
+                echo 'Building..已经拉取源码，在此处执行构建'// 已经拉取源码，在此处执行构建
             }
         }
         stage('Test') {
