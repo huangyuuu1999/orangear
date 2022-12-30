@@ -11,6 +11,8 @@ pipeline {
                     sh """
                         echo ${PASSWORD} | docker login -u 'gongyulei' --password-stdin 43.139.176.247/fruit_buckets
                         # delete old image if exists
+                        docker stop app
+                        docker rm app
                         docker rmi 43.139.176.247/fruit_buckets/orangear:latest
 
                         # build
@@ -22,7 +24,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                echo 'Testing..'
+                echo 'Testing.. I would add some test case later...'
             }
         }
         stage('Deploy') {
