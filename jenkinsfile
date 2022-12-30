@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        label "local"
+        label "local"  // 拉取、镜像制备、部署在同一节点
     } // 只在local 节点构建，部署
 
     stages {
@@ -25,6 +25,12 @@ pipeline {
                         echo "no 43.139.176.247/fruit_buckets/orangear:latest image!"
                     }
                 }
+            }
+        }
+        stage('build dist') {
+            // 在节点上 npm build
+            steps {
+                sh """npm run build"""
             }
         }
         stage('Build-image&&Push') {
