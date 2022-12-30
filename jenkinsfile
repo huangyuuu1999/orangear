@@ -11,6 +11,8 @@ pipeline {
                     sh """
                         echo ${PASSWORD} | docker login -u 'gongyulei' --password-stdin 43.139.176.247/fruit_buckets
                         # delete old image if exists
+                        docker stop app || true
+                        docker rm app || true
                         docker rmi 43.139.176.247/fruit_buckets/orangear:latest || true
                         # build
                         docker build -t 43.139.176.247/fruit_buckets/orangear:latest .
@@ -40,7 +42,7 @@ pipeline {
                         # pull
                         docker pull 43.139.176.247/fruit_buckets/orangear:latest
                         # deploy
-                        docker run -d -p80:80 43.139.176.247/fruit_buckets/orangear:latest
+                        docker run -d -name app -p80:80 43.139.176.247/fruit_buckets/orangear:latest
                     """
                 }
             }
