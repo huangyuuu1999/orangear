@@ -10,11 +10,9 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'jenkins-access-harbor', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]){
                     sh """
                         echo ${PASSWORD} | docker login -u 'gongyulei' --password-stdin 43.139.176.247/fruit_buckets
-                        
                         # delete old image if exists
                         docker rm $(docker ps -aq)
                         docker rmi 43.139.176.247/fruit_buckets/orangear:latest || true
-
                         # build
                         docker build -t 43.139.176.247/fruit_buckets/orangear:latest .
                         docker push 43.139.176.247/fruit_buckets/orangear:latest
