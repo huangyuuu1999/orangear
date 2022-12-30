@@ -1,10 +1,13 @@
 pipeline {
-    agent any
+    agent local // 只在local 节点构建，部署
 
     stages {
         stage('Build-image') {
             steps {
                 echo 'Building..已经拉取源码，在此处执行构建'// 已经拉取源码，在此处执行构建
+                script {
+
+                }
             }
         }
         stage('Test') {
