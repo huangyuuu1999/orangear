@@ -10,6 +10,8 @@ const count = ref(0)
 
 <template>
   <h1>{{ msg }}</h1>
+  <br>
+  <button><a href="https://spring.io/">Spring</a></button>
 </template>
 
 <style scoped>
