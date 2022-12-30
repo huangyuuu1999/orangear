@@ -4,16 +4,30 @@ pipeline {
     } // 只在local 节点构建，部署
 
     stages {
+        stage('Clean-task') {
+            try {
+                sh """ 
+                    docker stop app || true
+                    docker rm app || true
+                """
+            } catch(Exception err) {
+                echo "no app running."
+            }
+            try {
+                sh """ 
+                    docker rmi 43.139.176.247/fruit_buckets/orangear:latest
+                """
+            } catch(Exception err) {
+                echo "no 43.139.176.247/fruit_buckets/orangear:latest image!"
+            }
+        }
         stage('Build-image&&Push') {
             steps {
                 echo 'Building..已经拉取源码，在此处执行构建'// 已经拉取源码，在此处执行构建
                 withCredentials([usernamePassword(credentialsId: 'jenkins-access-harbor', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]){
                     sh """
                         echo ${PASSWORD} | docker login -u 'gongyulei' --password-stdin 43.139.176.247/fruit_buckets
-                        # delete old image if exists
-                        docker stop app || true
-                        docker rm app || true
-                        docker rmi 43.139.176.247/fruit_buckets/orangear:latest || true
+
                         # build
                         docker build -t 43.139.176.247/fruit_buckets/orangear:latest .
                         docker push 43.139.176.247/fruit_buckets/orangear:latest
@@ -36,8 +50,6 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'jenkins-access-harbor', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]){
                     sh """
                         echo ${PASSWORD} | docker login -u 'gongyulei' --password-stdin 43.139.176.247/fruit_buckets
-                        # delete old image if exists
-                        docker rmi 43.139.176.247/fruit_buckets/orangear:latest || true
 
                         # pull
                         docker pull 43.139.176.247/fruit_buckets/orangear:latest
