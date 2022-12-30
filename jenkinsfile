@@ -30,7 +30,12 @@ pipeline {
         stage('build dist') {
             // 在节点上 npm build
             steps {
-                sh """npm run build"""
+                sh """
+                    pwd
+                    node -v
+                    npm install vite
+                    npm run build
+                """
             }
         }
         stage('Build-image&&Push') {
