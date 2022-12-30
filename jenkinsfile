@@ -7,22 +7,26 @@ pipeline {
         stage('Clean-task') {
             steps {
                 step {
-                    try {
-                    sh """ 
-                        docker stop app || true
-                        docker rm app || true
-                    """
-                    } catch(Exception err) {
-                        echo "no app running."
+                    script {
+                        try {
+                        sh """ 
+                            docker stop app || true
+                            docker rm app || true
+                        """
+                        } catch(Exception err) {
+                            echo "no app running."
+                        }
                     }
                 }
                 step {
-                    try {
-                    sh """ 
-                        docker rmi 43.139.176.247/fruit_buckets/orangear:latest
-                    """
-                    } catch(Exception err) {
-                        echo "no 43.139.176.247/fruit_buckets/orangear:latest image!"
+                    script {
+                        try {
+                        sh """ 
+                            docker rmi 43.139.176.247/fruit_buckets/orangear:latest
+                        """
+                        } catch(Exception err) {
+                            echo "no 43.139.176.247/fruit_buckets/orangear:latest image!"
+                        }
                     }
                 }
             }
