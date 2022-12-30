@@ -1,5 +1,7 @@
 pipeline {
-    agent local // 只在local 节点构建，部署
+    agent {
+        label "local"
+    } // 只在local 节点构建，部署
 
     stages {
         stage('Build-image&&Push') {
