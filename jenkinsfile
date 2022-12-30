@@ -6,21 +6,24 @@ pipeline {
     stages {
         stage('Clean-task') {
             steps {
-                try {
+                step {
+                    try {
                     sh """ 
                         docker stop app || true
                         docker rm app || true
                     """
-                } catch(Exception err) {
-                    echo "no app running."
+                    } catch(Exception err) {
+                        echo "no app running."
+                    }
                 }
-
-                try {
+                step {
+                    try {
                     sh """ 
                         docker rmi 43.139.176.247/fruit_buckets/orangear:latest
                     """
-                } catch(Exception err) {
-                    echo "no 43.139.176.247/fruit_buckets/orangear:latest image!"
+                    } catch(Exception err) {
+                        echo "no 43.139.176.247/fruit_buckets/orangear:latest image!"
+                    }
                 }
             }
         }
