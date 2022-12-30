@@ -26,6 +26,11 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing.. I would add some test case later...'
+                sh """
+                    whoami
+                    pwd
+                    hostname
+                """
             }
         }
         stage('Deploy') {
