@@ -11,7 +11,7 @@ pipeline {
                     sh """
                         echo ${PASSWORD} | docker login -u 'gongyulei' --password-stdin 43.139.176.247/fruit_buckets
                         # delete old image if exists
-                        docker rmi 43.139.176.247/fruit_buckets/orangear:latest || true
+                        docker rmi 43.139.176.247/fruit_buckets/orangear:latest
 
                         # build
                         docker build -t 43.139.176.247/fruit_buckets/orangear:latest .
