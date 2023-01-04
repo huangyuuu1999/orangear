@@ -12,7 +12,7 @@ const count = ref(0)
   <h1>{{ msg }}</h1>
   <br>
   <button>
-    <router-link to="/home">Go to Home</router-link>
+    <router-link to="/home/3">Go to Home</router-link>
   </button>
   <button>
     <router-link to="/about">Go to About</router-link>

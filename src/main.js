@@ -7,7 +7,7 @@ import Home from './components/Home.vue'
 import About from './components/About.vue'
 
 const routes = [
-    { path: '/home', component: Home },
+    { path: '/home/:id', component: Home },
     { path: '/about', component: About },
   ]
 
