@@ -71,7 +71,7 @@ pipeline {
                         # pull
                         docker pull 43.139.176.247/fruit_buckets/orangear:latest
                         # deploy
-                        docker run -d --name app -p80:5000 43.139.176.247/fruit_buckets/orangear:latest
+                        docker run -d --name app -p80:5001 43.139.176.247/fruit_buckets/orangear:latest
                     """
                 }
             }
