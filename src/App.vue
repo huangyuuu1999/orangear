@@ -4,7 +4,7 @@ import HelloWorld from './components/HelloWorld.vue'
 
 <template>
   <div>
-    <HelloWorld msg="Hello, Dinner." />
+    <HelloWorld msg="Hello, Dinner 2023." />
   </div>
 </template>
 
