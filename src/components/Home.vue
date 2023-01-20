@@ -48,25 +48,85 @@ const changeColumn = () => {
 </script>
 
 <template>
-    <h1>Home Page.{{ $route.params.id }}</h1>
-    <div class="football">
-        <button @click="changeColumn">点击切换</button>
-        <h3>{{ ballBoard.title }}-{{ showColumn }}</h3>
-        <div v-if="showColumn == 'player'">
-            <div v-for="player in ballBoard.players" class="item">{{ player.name }}-{{ player.vote }}</div>
-        </div> 
-        <div v-else>
-            <div v-for="team in ballBoard.teams" class="item">{{ team.name }}-{{ team.vote }}</div>
+    <h2>Home Page {{ $route.params.id }}</h2>
+    <div class="football-wrapper">
+        <div class="football">
+            <button @click="changeColumn">点击切换</button>
+            <h3>{{ ballBoard.title }}-{{ showColumn }}</h3>
+            <div v-if="showColumn == 'player'">
+                <div v-for="player in ballBoard.players" class="item">{{ player.name }}-{{ player.vote }}</div>
+            </div> 
+            <div v-else>
+                <div v-for="team in ballBoard.teams" class="item">{{ team.name }}-{{ team.vote }}</div>
+            </div>
+        </div>
+        <div class="football">
+            <button @click="changeColumn">点击切换</button>
+            <h3>{{ ballBoard.title }}-{{ showColumn }}</h3>
+            <div v-if="showColumn == 'player'">
+                <div v-for="player in ballBoard.players" class="item">{{ player.name }}-{{ player.vote }}</div>
+            </div> 
+            <div v-else>
+                <div v-for="team in ballBoard.teams" class="item">{{ team.name }}-{{ team.vote }}</div>
+            </div>
+        </div>
+        <div class="football">
+            <button @click="changeColumn">点击切换</button>
+            <h3>{{ ballBoard.title }}-{{ showColumn }}</h3>
+            <div v-if="showColumn == 'player'">
+                <div v-for="player in ballBoard.players" class="item">{{ player.name }}-{{ player.vote }}</div>
+            </div> 
+            <div v-else>
+                <div v-for="team in ballBoard.teams" class="item">{{ team.name }}-{{ team.vote }}</div>
+            </div>
+        </div>
+        <div class="football">
+            <button @click="changeColumn">点击切换</button>
+            <h3>{{ ballBoard.title }}-{{ showColumn }}</h3>
+            <div v-if="showColumn == 'player'">
+                <div v-for="player in ballBoard.players" class="item">{{ player.name }}-{{ player.vote }}</div>
+            </div> 
+            <div v-else>
+                <div v-for="team in ballBoard.teams" class="item">{{ team.name }}-{{ team.vote }}</div>
+            </div>
+        </div>
+        <div class="football">
+            <button @click="changeColumn">点击切换</button>
+            <h3>{{ ballBoard.title }}-{{ showColumn }}</h3>
+            <div v-if="showColumn == 'player'">
+                <div v-for="player in ballBoard.players" class="item">{{ player.name }}-{{ player.vote }}</div>
+            </div> 
+            <div v-else>
+                <div v-for="team in ballBoard.teams" class="item">{{ team.name }}-{{ team.vote }}</div>
+            </div>
+        </div>
+        <div class="football">
+            <button @click="changeColumn">点击切换</button>
+            <h3>{{ ballBoard.title }}-{{ showColumn }}</h3>
+            <div v-if="showColumn == 'player'">
+                <div v-for="player in ballBoard.players" class="item">{{ player.name }}-{{ player.vote }}</div>
+            </div> 
+            <div v-else>
+                <div v-for="team in ballBoard.teams" class="item">{{ team.name }}-{{ team.vote }}</div>
+            </div>
         </div>
     </div>
 </template>
 
 <style scoped>
+.football-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: space-between;
+}
 .football{
+    margin-top: 10px;
     background-color: rgba(12, 12, 12, .3);
     font-size: larger;
     border-radius: 5px;
     padding: 20px;
+    width: 400px;
 }
 .item{
     background-color: rgb(90, 108, 73);
