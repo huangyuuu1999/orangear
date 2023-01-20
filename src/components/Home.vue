@@ -1,5 +1,6 @@
 <script setup>
 import { reactive, ref } from 'vue';
+import { Search } from '@element-plus/icons-vue'
 
 const ballBoard = reactive({
     title: "世界杯热度排行",
@@ -48,7 +49,11 @@ const changeColumn = () => {
 </script>
 
 <template>
-    <h2>Home Page {{ $route.params.id }}</h2>
+    <div class="football-header">
+        <h2 style="background-color: 'tomato';">Home{{ $route.params.id }}</h2>
+        <el-input v-model="input3" placeholder="搜索" class="input-with-select" :suffix-icon="Search">
+        </el-input>
+    </div>
     <div class="football-wrapper">
         <div class="football">
             <button @click="changeColumn">点击切换</button>
@@ -143,5 +148,14 @@ const changeColumn = () => {
     border-radius: 5px;
     font-family: 'Times New Roman', Times, serif;
     font-weight: bolder;
+}
+
+.football-header {
+    display: flex;
+    justify-content: space-between;
+}
+.input-with-select {
+  background-color: var(--el-fill-color-blank);
+  width: 400px;
 }
 </style>

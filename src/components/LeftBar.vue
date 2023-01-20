@@ -6,8 +6,8 @@
     <router-link to="/home/3" class="box"> <img src="/send.png" alt="">  </router-link>
     <router-link to="/home/4" class="box"> <img src="/picture.png" alt="">  </router-link>
     <router-link to="/about" class="box"> <img src="/secure.png" alt="">  </router-link>
-    <a href="#" class="box"> <img src="/db.png" alt="">  </a>
-    <a href="#" class="box"> <img src="/setting.png" alt="">  </a>
+    <router-link to="/upload" class="box"> <img src="/db.png" alt="">  </router-link>
+    <router-link to="/setting" class="box"> <img src="/setting.png" alt="">  </router-link>
     <a href="#" class="box"> <img src="/qrcode.png" alt="">  </a>
     <a href="#" class="box"> <img src="/exit-red.png" alt="">  </a>
 </div>
