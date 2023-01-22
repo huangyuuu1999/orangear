@@ -8,8 +8,8 @@
     <router-link to="/about" class="box"> <img src="/secure.png" alt="">  </router-link>
     <router-link to="/upload" class="box"> <img src="/db.png" alt="">  </router-link>
     <router-link to="/setting" class="box"> <img src="/setting.png" alt="">  </router-link>
-    <a href="#" class="box"> <img src="/qrcode.png" alt="">  </a>
-    <a href="#" class="box"> <img src="/exit-red.png" alt="">  </a>
+    <router-link to="/markdown" class="box"> <img src="/qrcode.png" alt="">  </router-link>
+    <router-link to="/tools" class="box"> <img src="/exit-red.png" alt="">  </router-link>
 </div>
 </template>
 
