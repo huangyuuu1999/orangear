@@ -17,7 +17,7 @@ const open = () => {
   })
 }
 
-const heroInfo = reactive({
+let heroInfo = reactive({
   info:[
     {Name:"成吉思汗",Age:54,Attack:93,Wise:85},
     {Name:"汉武帝",Age:58,Attack:92,Wise:89}
