@@ -25,7 +25,7 @@ let heroInfo = reactive({
 })
 
 const getInfo = ()=>{
-  axios.get("http://localhost:80/api/info").then(
+  axios.get("http://182.160.7.230:80/api/info").then(
     res => {
       heroInfo = res.data
     }
