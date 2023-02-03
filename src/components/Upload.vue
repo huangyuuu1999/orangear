@@ -24,11 +24,13 @@ import request from '../plugins/requestUtil.js'
 
 
 const getPing = ()=> {
-  request.get({
+  request({
     url: "/api/ping",
     method: "get"
   }).then( res => {
     alert(res.data)
+  }).catch( res => {
+    alert(res.message)
   })
 }
 </script>
