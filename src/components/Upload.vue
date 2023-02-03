@@ -19,6 +19,18 @@
   
 <script setup lang="ts">
 import { UploadFilled } from '@element-plus/icons-vue'
+import { method } from 'lodash';
+import request from '../plugins/requestUtil.js'
+
+
+const getPing = ()=> {
+  request.get({
+    url: "/api/ping",
+    method: "get"
+  }).then( res => {
+    alert(res.data)
+  })
+}
 </script>
 
 
