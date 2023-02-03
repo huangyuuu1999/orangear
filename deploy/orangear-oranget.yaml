@@ -35,7 +35,7 @@ data:
             }
 
             location ~ /api {
-                proxy_pass  http://https://43.139.176.247:30011;
+                proxy_pass  http://43.139.176.247:30011;
             }
             error_page   500 502 503 504  /50x.html;
             location = /50x.html {
