@@ -28,7 +28,7 @@ const getInfo = ()=>{
   axios.get("http://182.160.7.230:80/api/info").then(
     res => {
 	  console.log(res)
-      heroInfo = res.data
+      heroInfo.info = res.data.info
     }
   )
 }
@@ -53,7 +53,7 @@ const getInfo = ()=>{
         </el-table-column>
       </el-table>
     </div>
-	<div>
+	<div v-show="false">
 		<h2 v-for="hero in heroInfo.info">{{ hero.Name }} == {{ hero.Age }} == {{ hero.Attack }}</h2>
 	</div>
 </template>
