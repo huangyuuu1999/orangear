@@ -15,6 +15,7 @@
         </div>
       </template>
     </el-upload>
+    <button @click="getPing">Ping</button>
 </template>
   
 <script setup lang="ts">
