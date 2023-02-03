@@ -20,7 +20,6 @@
   
 <script setup lang="ts">
 import { UploadFilled } from '@element-plus/icons-vue'
-import { method } from 'lodash';
 import request from '../plugins/requestUtil.js'
 
 
