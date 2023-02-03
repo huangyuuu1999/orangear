@@ -2,6 +2,7 @@
 import { affixProps, ElMessage, ElMessageBox } from 'element-plus'
 import { reactive } from 'vue';
 import axios from "axios"
+import request from '../plugins/requestUtil.js'
 
 const open = () => {
   ElMessageBox.alert('您点击了按钮，展示此弹框', 'ElementUI-plus.', {
@@ -25,9 +26,11 @@ let heroInfo = reactive({
 })
 
 const getInfo = ()=>{
-  axios.get("http://182.160.7.230:80/api/info").then(
+  request({
+    url: "/api/info",
+    method: "get"
+  }).then(
     res => {
-	  console.log(res)
       heroInfo.info = res.data.info
     }
   )
