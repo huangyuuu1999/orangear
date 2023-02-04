@@ -27,5 +27,6 @@ import LeftBar from './components/LeftBar.vue'
     height: 750px;
     border-radius: 10px;
     padding: 10px ;
+    overflow: hidden;
 }
 </style>
