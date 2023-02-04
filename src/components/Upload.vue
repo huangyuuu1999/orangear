@@ -15,7 +15,7 @@
         </div>
       </template>
     </el-upload>
-    <button @click="getPing">Ping</button>
+    <el-button @click="getPing" type="success" plain>Ping</el-button>
 </template>
   
 <script setup lang="ts">
@@ -28,7 +28,7 @@ const getPing = ()=> {
     url: "/api/ping",
     method: "get"
   }).then( res => {
-    alert(res.data)
+    alert(res.data.time)
   }).catch( res => {
     alert(res.message)
   })

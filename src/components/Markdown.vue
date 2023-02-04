@@ -38,17 +38,18 @@ const markdownToHtml = computed(
     display: flex;
     justify-content: space-between;
     flex-direction: row;
+    overflow: hidden;
 }
 
 .show-markdown div {
     width: 600px;
-    height: 92vh;
-    overflow: hidden;
+    height: 720px;
 }
 .content {
     padding-left: 30px;
     padding-top: 10px;
     border: 2px, dotted, tomato;
     background-color: rgba(109, 153, 130, .15);
+    overflow: hidden;
 }
 </style>
