@@ -122,3 +122,92 @@ spec:
     nodePort: 30011
     targetPort: 8080
 
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql
+spec:
+  selector:
+    matchLabels:
+      app: mysql-app
+  template:
+    metadata:
+      labels:
+        app: mysql-app
+    spec:
+      containers:
+        - name: mysql-container
+          image: 43.139.176.247/fruit_buckets/mysql:5.7
+          env:
+          - name: "MYSQL_ROOT_PASSWORD"
+            value: "123456"
+          resources:
+            limits:
+              cpu: "1"
+              memory: "0.5Gi"
+          # volumeMounts:
+          #   - name: config
+          #     mountPath: /etc/mysql/conf.d/mysql.cnf
+          #     readOnly: true
+          #     subPath: mysql.cnf
+          #   - name: mysql-data
+          #     mountPath: /var/lib/mysql
+      # volumes:
+      #   - name: config
+      #     configMap:
+      #       defaultMode: 0644
+      #       name: mysql-config
+      #   - name: mysql-data
+      #     hostPath:
+      #       path: $(mysql_data_dir)
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-svc
+spec:
+  selector:
+    app: mysql-app
+  type: ClusterIP
+  ports:
+    - protocol: TCP
+      port: 3306
+      targetPort: 3306
+
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis
+spec:
+  selector:
+    matchLabels:
+      app: redis-app
+  template:
+    metadata:
+      labels:
+        app: redis-app
+    spec:
+      containers:
+        - name: redis-container
+          image: 43.139.176.247/fruit_buckets/redis:latest
+          command: ["redis-server", "--requirepass", "123456"]
+          resources:
+            limits:
+              cpu: "1"
+              memory: "1Gi"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis-svc
+spec:
+  selector:
+    app: redis-app
+  type: ClusterIP
+  ports:
+    - protocol: TCP
+      port: 6379
+      targetPort: 6379
