@@ -46,6 +46,30 @@ data:
 
 ---
 apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysql-config
+data:
+  mysql.cnf: |-
+    [client]
+    default-character-set=utf8mb4
+    [mysql]
+    default-character-set=utf8mb4
+    [mysqld]
+    interactive_timeout=30
+    wait_timeout=28800
+    max_connections=3000
+    max_connect_errors=10000
+    max_allowed_packet=100M
+    character-set-server=utf8mb4
+    collation-server=utf8mb4_general_ci
+    innodb_buffer_pool_size=4G
+    skip-log-bin
+    server-id=1
+    datadir=/var/lib/mysql
+
+---
+apiVersion: v1
 kind: Service
 metadata:
   name: orangear-frontend-svc
@@ -146,23 +170,24 @@ spec:
             limits:
               cpu: "1"
               memory: "0.5Gi"
-      imagePullSecrets:
-        - name: harbor-secret
-          # volumeMounts:
+          volumeMounts:
           #   - name: config
           #     mountPath: /etc/mysql/conf.d/mysql.cnf
           #     readOnly: true
           #     subPath: mysql.cnf
-          #   - name: mysql-data
-          #     mountPath: /var/lib/mysql
-      # volumes:
-      #   - name: config
-      #     configMap:
-      #       defaultMode: 0644
-      #       name: mysql-config
-      #   - name: mysql-data
-      #     hostPath:
-      #       path: $(mysql_data_dir)
+            - name: mysql-data
+              mountPath: /var/lib/mysql
+      imagePullSecrets:
+        - name: harbor-secret
+      volumes:
+        # - name: config
+        #   configMap:
+        #     defaultMode: 0644
+        #     name: mysql-config
+        - name: mysql-data
+          hostPath:
+            path: /fruit_buckets/data/mysql
+            type: DirectoryOrCreate
 
 ---
 apiVersion: v1
@@ -201,8 +226,16 @@ spec:
             limits:
               cpu: "1"
               memory: "1Gi"
+          volumeMounts:
+            - name: mysql-data
+              mountPath: /data
       imagePullSecrets:
       - name: harbor-secret
+      volumes:
+      - name: redis-data
+        hostPath:
+          path: /fruit_buckets/data/redis
+          type: DirectoryOrCreate
 
 ---
 apiVersion: v1
