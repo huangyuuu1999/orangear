@@ -11,7 +11,7 @@
       <div class="ops">
         <el-link :href="site.url" :icon="Pointer">dive</el-link>
         <el-button class="button" :icon="Star" plain></el-button>
-        <el-button class="button" :icon="Menu" plain></el-button>
+        <el-button class="button" :icon="Menu" plain @click="getSiteFromDb"></el-button>
         <el-button class="button" :icon="Delete" plain></el-button>
       </div>
     </el-card>
@@ -139,7 +139,8 @@ const getSiteFromDb = ()=>{
     method: "get"
   }).then(    
     res => {
-      sites.likes = res.data.info
+      // sites.likes = res.data.info
+      alert(res)
     })
 }
 
@@ -169,5 +170,6 @@ const removeFromSites = (id)=>{
     }
     alert(sites.likes.length)
 }
+
 
 </script>
