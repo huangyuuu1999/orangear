@@ -18,7 +18,7 @@
     <el-button @click="getPing" type="success" plain>Ping</el-button>
 </template>
   
-<script setup lang="ts">
+<script setup>
 import { UploadFilled } from '@element-plus/icons-vue'
 import request from '../plugins/requestUtil.js'
 

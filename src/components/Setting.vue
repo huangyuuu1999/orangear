@@ -84,7 +84,7 @@
 <script setup>
 import { reactive, ref } from "vue"
 import { Delete, Pointer, Star, Menu, CirclePlusFilled, Plus, CirclePlus } from '@element-plus/icons-vue'
-
+import request from "../plugins/requestUtil";
 
 const sites = reactive({ 
     likes: [
@@ -132,6 +132,16 @@ const sites = reactive({
         },
     ]
 })
+
+const getSiteFromDb = ()=>{
+  request({
+    url: "/api/sites",
+    method: "get"
+  }).then(    
+    res => {
+      sites.likes = res.data.info
+    })
+}
 
 const dialogFormVisible = ref(false)
 const formLabelWidth = '120px'
