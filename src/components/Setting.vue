@@ -1,4 +1,5 @@
 <template>
+  <button @click="getSiteFromDb">kk</button>
   <el-space wrap>
     <el-card v-for="site in sites.likes" class="box-card">
       <template #header>
@@ -137,11 +138,12 @@ const getSiteFromDb = ()=>{
   request({
     url: "/api/sites",
     method: "get"
-  }).then(    
-    res => {
+  }).then( res => {
       sites.likes = res.data.info
       alert(res.data.info)
       console.log(res.data.info);
+    }).catch( es => {
+      alert(res.message)
     })
 }
 
