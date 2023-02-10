@@ -246,7 +246,7 @@ metadata:
 spec:
   selector:
     app: redis-app
-  type: ClusterIP
+  type: NodePort
   ports:
     - protocol: TCP
       port: 6379
