@@ -139,7 +139,7 @@ const getSiteFromDb = ()=>{
     method: "get"
   }).then(    
     res => {
-      // sites.likes = res.data.info
+      sites.likes = res.data.info
       alert(res.data.info)
       console.log(res.data.info);
     })
