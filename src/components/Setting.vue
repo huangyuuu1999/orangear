@@ -140,7 +140,8 @@ const getSiteFromDb = ()=>{
   }).then(    
     res => {
       // sites.likes = res.data.info
-      alert(res)
+      alert(res.data.info)
+      console.log(res.data.info);
     })
 }
 
