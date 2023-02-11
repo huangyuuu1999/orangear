@@ -187,6 +187,7 @@ const removeFromSites = (id)=>{
       id: id
     }
   }).then( res => {
+      getSiteFromDb()
       ElNotification({
         title: '删除收藏站点！',
         message: h('i', { style: 'color: teal' }, '删除:' + res.data.id),
