@@ -84,6 +84,7 @@
 
 <script setup>
 import { reactive, ref } from "vue"
+import { h } from 'vue'
 import { ElNotification } from 'element-plus'
 import { Delete, Pointer, Star, Menu, CirclePlusFilled, Plus, CirclePlus } from '@element-plus/icons-vue'
 import request from "../plugins/requestUtil";
