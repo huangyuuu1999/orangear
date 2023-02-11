@@ -140,12 +140,12 @@ const getSiteFromDb = ()=>{
     method: "get"
   }).then( res => {
       sites.likes = res.data.info
-      alert(res.data.info)
       console.log(res.data.info);
     }).catch( es => {
       alert(res.message)
     })
 }
+getSiteFromDb()
 
 const dialogFormVisible = ref(false)
 const formLabelWidth = '120px'
@@ -178,13 +178,21 @@ const addFormToSites = ()=>{
 }
 
 const removeFromSites = (id)=>{
-    console.log(id)
-    for(let i=0; i<sites.likes.length; i++){
-        if (sites.likes[i].id == id){
-            sites.likes.slice(sites.likes[i])
-        }
-    }
-    alert(sites.likes.length)
+  request({
+    url: "/api/sites",
+    method: "delete",
+    params: id
+  }).then( res => {
+      ElNotification({
+        title: '删除收藏站点！',
+        message: h('i', { style: 'color: teal' }, '删除:' + res.data.id),
+      })
+    }).catch( res => {
+      ElNotification({
+        title: '删除收藏站点！',
+        message: h('i', { style: 'color: teal' }, '删除失败'),
+      })
+    })
 }
 
 
