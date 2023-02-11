@@ -10,7 +10,7 @@
         </div>
       </template>
       <div class="ops">
-        <el-link :href="site.url" :icon="Pointer">dive</el-link>
+        <el-link :href="site.url" :icon="Pointer" @click="upDateVisit(site.id)">dive</el-link>
         <el-button class="button" :icon="Star" plain></el-button>
         <el-button class="button" :icon="Menu" plain @click="getSiteFromDb"></el-button>
         <el-button class="button" :icon="Delete" plain></el-button>
@@ -201,5 +201,18 @@ const removeFromSites = (id)=>{
     })
 }
 
+const upDateVisit = (id)=>{
+  request({
+    url: "/api/sites",
+    method: "put",
+    params: {
+      id: id
+    }
+  }).then( res=>{
+    getSiteFromDb()
+  }).catch( res=>{
+
+  })
+}
 
 </script>
