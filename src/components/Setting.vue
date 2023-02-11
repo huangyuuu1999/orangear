@@ -183,7 +183,9 @@ const removeFromSites = (id)=>{
   request({
     url: "/api/sites",
     method: "delete",
-    params: id
+    params: {
+      id: id
+    }
   }).then( res => {
       ElNotification({
         title: '删除收藏站点！',
