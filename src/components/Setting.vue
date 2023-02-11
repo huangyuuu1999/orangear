@@ -1,5 +1,5 @@
 <template>
-  <button @click="getSiteFromDb">kk</button>
+  <!-- <button @click="getSiteFromDb">kk</button> -->
   <el-space wrap>
     <el-card v-for="site in sites.likes" class="box-card">
       <template #header>
