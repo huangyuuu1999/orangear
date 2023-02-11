@@ -167,6 +167,7 @@ const addFormToSites = ()=>{
         url: form.url
       }
     }).then( res => {
+      getSiteFromDb()
       ElNotification({
         title: '新增收藏站点！',
         message: h('i', { style: 'color: teal' }, '新增:' + res.data.id),
