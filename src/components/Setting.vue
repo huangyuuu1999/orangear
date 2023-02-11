@@ -157,11 +157,24 @@ const form = reactive({
 
 const addFormToSites = ()=>{
     dialogFormVisible.value = false
-    sites.likes.push({
+    request({
+      url: "/api/sites",
+      method: "post",
+      data: {
         name: form.name,
         url: form.url
+      }
+    }).then( res => {
+      ElNotification({
+        title: '新增收藏站点！',
+        message: h('i', { style: 'color: teal' }, '新增:' + res.data.id),
+      })
+    }).catch( res => {
+      ElNotification({
+        title: '新增收藏站点！',
+        message: h('i', { style: 'color: teal' }, '新增失败'),
+      })
     })
-    console.log(sites.likes)
 }
 
 const removeFromSites = (id)=>{
