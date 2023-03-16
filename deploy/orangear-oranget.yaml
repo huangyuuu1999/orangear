@@ -259,7 +259,7 @@ kind: CronJob
 metadata:
   name: oranjob
 spec:
-  schedule: "*/20 * * * *"
+  schedule: "*/40 * * * *"
   jobTemplate:
     spec:
       ttlSecondsAfterFinished: 100
